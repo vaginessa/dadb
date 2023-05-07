@@ -39,7 +39,7 @@ class TcpForwarder(
                 handleForwarding()
             } catch (ignored: SocketException) {
                 // Do nothing
-            } catch (e: IOException) {
+            } catch (e: Throwable) {
                 log { "could not start TCP port forwarding: ${e.message}" }
             } finally {
                 moveToState(State.STOPPED)
