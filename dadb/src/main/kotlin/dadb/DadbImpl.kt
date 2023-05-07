@@ -25,7 +25,7 @@ internal class DadbImpl(
         private val port: Int,
         private val keyPair: AdbKeyPair? = null
 ) : Dadb {
-
+    private var socket:Socket?=null
     private var connection: Pair<AdbConnection, Socket>? = null
 
     override fun open(destination: String) = connection().open(destination)
@@ -35,6 +35,7 @@ internal class DadbImpl(
     }
 
     override fun close() {
+        socket?.close()
         connection?.first?.close()
     }
     override fun toString() = "$host:$port"
@@ -55,7 +56,7 @@ internal class DadbImpl(
     }
 
     private fun newConnection(): Pair<AdbConnection, Socket> {
-        val socket = Socket(host, port)
+        socket = Socket(host, port)
         val adbConnection = AdbConnection.connect(socket, keyPair)
         return adbConnection to socket
     }
