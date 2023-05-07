@@ -77,7 +77,9 @@ class TcpForwarder(
                         adbStream.source,
                         client.sink().buffer()
                     )
-                } finally {
+                }catch (e: Throwable) {
+                }  
+                finally {
                     adbStream?.close()
                     client.close()
 
