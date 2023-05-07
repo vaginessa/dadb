@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
 import kotlin.concurrent.thread
 
-internal class TcpForwarder(
+class TcpForwarder(
     private val dadb: Dadb,
     private val hostPort: Int,
     private val targetPort: Int,
