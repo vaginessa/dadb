@@ -61,16 +61,15 @@ class TcpForwarder(
             val client = serverRef.accept()
 
             clientExecutor?.execute {
-                val adbStream = dadb.open("tcp:$targetPort")
-
-                val readerThread = thread {
-                    forward(
-                        client.getInputStream().source(),
-                        adbStream.sink
-                    )
-                }
-
                 try {
+                    val adbStream = dadb.open("tcp:$targetPort")
+
+                    val readerThread = thread {
+                        forward(
+                            client.getInputStream().source(),
+                            adbStream.sink
+                        )
+                    }
                     forward(
                         adbStream.source,
                         client.sink().buffer()
