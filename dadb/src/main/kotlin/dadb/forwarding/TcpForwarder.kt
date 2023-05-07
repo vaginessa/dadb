@@ -23,7 +23,7 @@ internal class TcpForwarder(
     private val targetPort: Int,
 ) : AutoCloseable {
 
-    private var state: State = State.STOPPED
+    public var state: State = State.STOPPED
     private var serverThread: Thread? = null
     private var server: ServerSocket? = null
     private var clientExecutor: ExecutorService? = null
