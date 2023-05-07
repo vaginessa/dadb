@@ -57,7 +57,7 @@ internal class DadbImpl(
 
     private fun newConnection(): Pair<AdbConnection, Socket> {
         socket = Socket(host, port)
-        val adbConnection = AdbConnection.connect(socket, keyPair)
-        return adbConnection to socket
+        val adbConnection = AdbConnection.connect(socket!!, keyPair)
+        return adbConnection to socket!!
     }
 }
