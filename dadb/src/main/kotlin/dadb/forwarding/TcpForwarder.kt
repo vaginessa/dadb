@@ -135,7 +135,7 @@ class TcpForwarder(
         this.state = state
     }
 
-    private enum class State {
+    enum class State {
         STARTING,
         STARTED,
         STOPPING,
