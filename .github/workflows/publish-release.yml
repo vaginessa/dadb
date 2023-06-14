@@ -1,9 +1,7 @@
 name: Publish Release
 
 on:
-  push:
-    tags:
-      - 'v*'
+    workflow_dispatch:
 
 env:
   ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
